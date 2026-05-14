@@ -1,6 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+from config import settings
+
+
 class Outlet(models.Model):
     """A physical trading point in the electronics network."""
 
@@ -27,29 +30,55 @@ class Outlet(models.Model):
         verbose_name="Daily revenue",
     )
 
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="employee",
+        verbose_name="User",
+    )
+
     class Meta:
         verbose_name = "Outlet"
         verbose_name_plural = "Outlets"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.get_outlet_type_display()} — {self.name}"
 
-    def clean(self):
+    def clean(self) -> None:
         if (
             self.outlet_type == self.OutletType.HEAD
             and Outlet.objects.filter(outlet_type=self.OutletType.HEAD)
             .exclude(pk=self.pk)
             .exists()
         ):
-            raise ValidationError("There must be exactly one head office in the system.")
+            raise ValidationError(
+                "There must be exactly one head office in the system."
+            )
 
     @property
     def address(self) -> str:
         return f"{self.country}, {self.city}, {self.street}, д. {self.house_number}"
 
 
+class OutletAPIKey(models.Model):
+    """Represents an API key used to authenticate requests for a specific outlet."""
+
+    key = models.CharField(max_length=64, blank=True, unique=True, null=True, verbose_name="API-key")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User")
+    outlet = models.ForeignKey('Outlet', on_delete=models.CASCADE, verbose_name="Outlet")
+
+    class Meta:
+        verbose_name = "Outlet API Key"
+        verbose_name_plural = "Outlet API Keys"
+
+    def __str__(self) -> str:
+        return f"Key for {self.user.username} at {self.outlet.name}"
+
+
 class Employee(models.Model):
-    """ A staff member belonging to a specific outlet."""
+    """A staff member belonging to a specific outlet."""
 
     outlet = models.ForeignKey(
         Outlet,
@@ -66,5 +95,5 @@ class Employee(models.Model):
         verbose_name = "Employee"
         verbose_name_plural = "Employees"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.full_name} ({self.outlet.name})"

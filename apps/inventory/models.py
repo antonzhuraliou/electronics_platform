@@ -5,7 +5,7 @@ from apps.network.models import Outlet
 
 
 class StockItem(models.Model):
-    """ A stock entry linking a dealer outlet to a catalogue product."""
+    """A stock entry linking a dealer outlet to a catalogue product."""
 
     outlet = models.ForeignKey(
         Outlet,
@@ -27,5 +27,5 @@ class StockItem(models.Model):
         verbose_name_plural = "Stock items"
         unique_together = [("outlet", "product")]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.product} @ {self.outlet.name} — {self.quantity} in stock"

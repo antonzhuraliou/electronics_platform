@@ -16,10 +16,10 @@ class Product(models.Model):
         verbose_name_plural = "Products"
         ordering = ["brand", "model"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.brand} {self.model}"
 
-    def clean(self):
+    def clean(self) -> None:
         if self.release_date and self.release_date > timezone.now().date():
             raise ValidationError(
                 {"release_date": "Release date cannot be in the future."}

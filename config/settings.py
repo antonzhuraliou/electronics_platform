@@ -142,7 +142,6 @@ LOGS_DIR.mkdir(exist_ok=True)
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-
     "formatters": {
         "verbose": {
             "format": "{asctime} [{levelname}] {name}:{lineno} — {message}",
@@ -155,7 +154,6 @@ LOGGING = {
             "datefmt": "%H:%M:%S",
         },
     },
-
     "filters": {
         "require_debug_true": {
             "()": "django.utils.log.RequireDebugTrue",
@@ -164,7 +162,6 @@ LOGGING = {
             "()": "django.utils.log.RequireDebugFalse",
         },
     },
-
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
@@ -201,7 +198,6 @@ LOGGING = {
             "encoding": "utf-8",
         },
     },
-
     "loggers": {
         "apps": {
             "handlers": ["console", "app_file", "error_file"],
@@ -234,13 +230,22 @@ LOGGING = {
             "propagate": False,
         },
     },
-
     "root": {
         "handlers": ["console", "app_file"],
         "level": "WARNING",
     },
 }
 
+AUTH_USER_MODEL = "auth.User"
+
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "apps.network.authentication.OutletAPIKeyAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "apps.network.permissions.IsActiveEmployee",
+    ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
