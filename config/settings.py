@@ -83,8 +83,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": "5432",
     }
 }
 
@@ -124,10 +128,118 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 INTERNAL_IPS = [
     os.getenv("INTERNAL_IPS"),
 ]
+
+
+LOGS_DIR = BASE_DIR / "logs"
+LOGS_DIR.mkdir(exist_ok=True)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+
+    "formatters": {
+        "verbose": {
+            "format": "{asctime} [{levelname}] {name}:{lineno} — {message}",
+            "style": "{",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+        "simple": {
+            "format": "{asctime} [{levelname}] {name} — {message}",
+            "style": "{",
+            "datefmt": "%H:%M:%S",
+        },
+    },
+
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+    },
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "filters": ["require_debug_true"],
+        },
+        "console_always": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "app_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOGS_DIR / "app.log",
+            "maxBytes": 10 * 1024 * 1024,
+            "backupCount": 5,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
+        "error_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOGS_DIR / "errors.log",
+            "maxBytes": 10 * 1024 * 1024,
+            "backupCount": 5,
+            "formatter": "verbose",
+            "level": "ERROR",
+            "encoding": "utf-8",
+        },
+        "celery_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOGS_DIR / "celery.log",
+            "maxBytes": 10 * 1024 * 1024,
+            "backupCount": 3,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
+    },
+
+    "loggers": {
+        "apps": {
+            "handlers": ["console", "app_file", "error_file"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+        "celery_tasks": {
+            "handlers": ["console_always", "celery_file", "error_file"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+        "django": {
+            "handlers": ["console", "app_file", "error_file"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "django.security": {
+            "handlers": ["app_file", "error_file"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "celery": {
+            "handlers": ["console_always", "celery_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "celery.beat": {
+            "handlers": ["console_always", "celery_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+
+    "root": {
+        "handlers": ["console", "app_file"],
+        "level": "WARNING",
+    },
+}
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",

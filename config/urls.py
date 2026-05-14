@@ -29,6 +29,9 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path("admin/", admin.site.urls),
+    path("api/", include("apps.network.urls")),
+    path("api/", include("apps.catalog.urls")),
+    path("api/", include("apps.inventory.urls")),
 ]
 
 if settings.DEBUG:
