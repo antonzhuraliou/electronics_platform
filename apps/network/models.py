@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.core.exceptions import ValidationError
 
@@ -30,18 +32,17 @@ class Outlet(models.Model):
         verbose_name="Daily revenue",
     )
 
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="employee",
-        verbose_name="User",
-    )
-
     class Meta:
         verbose_name = "Outlet"
         verbose_name_plural = "Outlets"
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=["outlet_type"],
+                condition=models.Q(outlet_type="HEAD"),
+                name="unique_head_office"
+            )
+        ]
 
     def __str__(self) -> str:
         return f"{self.get_outlet_type_display()} — {self.name}"
@@ -65,9 +66,9 @@ class Outlet(models.Model):
 class OutletAPIKey(models.Model):
     """Represents an API key used to authenticate requests for a specific outlet."""
 
-    key = models.CharField(max_length=64, blank=True, unique=True, null=True, verbose_name="API-key")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User")
-    outlet = models.ForeignKey('Outlet', on_delete=models.CASCADE, verbose_name="Outlet")
+    key = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, verbose_name="API-key")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User", related_name="api_keys")
+    outlet = models.ForeignKey('Outlet', on_delete=models.CASCADE, verbose_name="Outlet", related_name="api_keys")
 
     class Meta:
         verbose_name = "Outlet API Key"
@@ -90,6 +91,14 @@ class Employee(models.Model):
     full_name = models.CharField(max_length=200, verbose_name="Full name")
     phone = models.CharField(max_length=30, verbose_name="Phone number")
     email = models.EmailField(verbose_name="E-mail")
+
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="employee",
+        verbose_name="User",
+        null=True
+    )
 
     class Meta:
         verbose_name = "Employee"
