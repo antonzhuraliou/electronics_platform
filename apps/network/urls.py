@@ -1,3 +1,10 @@
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import OutletViewSet
+
+router = DefaultRouter()
+router.register("outlets", OutletViewSet, basename="outlet")
+
 urlpatterns = [
-    # TODO: add network endpoints
+    path("", include(router.urls)),
 ]
