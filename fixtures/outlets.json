@@ -1,0 +1,145 @@
+[
+{
+  "model": "network.outlet",
+  "pk": 1,
+  "fields": {
+    "outlet_type": "HEAD",
+    "name": "Центральный склад",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "ул. Складская",
+    "house_number": "1",
+    "daily_revenue": "0.00"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 2,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ТехноМир",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "ул. Арбат",
+    "house_number": "15",
+    "daily_revenue": "127820.08"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 3,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ЭлектроСфера",
+    "country": "Россия",
+    "city": "Санкт-Петербург",
+    "street": "Невский пр.",
+    "house_number": "42",
+    "daily_revenue": "116948.60"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 4,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ДигиталПлаза",
+    "country": "Россия",
+    "city": "Новосибирск",
+    "street": "ул. Ленина",
+    "house_number": "8",
+    "daily_revenue": "85386.29"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 5,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "МегаТех",
+    "country": "Россия",
+    "city": "Екатеринбург",
+    "street": "пр. Мира",
+    "house_number": "31",
+    "daily_revenue": "106278.18"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 6,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "СмартСтор",
+    "country": "Россия",
+    "city": "Казань",
+    "street": "ул. Баумана",
+    "house_number": "7",
+    "daily_revenue": "144043.75"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 7,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ГаджетХаус",
+    "country": "Беларусь",
+    "city": "Минск",
+    "street": "пр. Независимости",
+    "house_number": "55",
+    "daily_revenue": "39136.97"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 8,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ТехноЛайн",
+    "country": "Казахстан",
+    "city": "Алматы",
+    "street": "ул. Абая",
+    "house_number": "19",
+    "daily_revenue": "197473.71"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 9,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ДжетЭлектроникс",
+    "country": "Россия",
+    "city": "Краснодар",
+    "street": "ул. Красная",
+    "house_number": "82",
+    "daily_revenue": "28726.04"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 10,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "ИнноваТех",
+    "country": "Россия",
+    "city": "Самара",
+    "street": "ул. Куйбышева",
+    "house_number": "3",
+    "daily_revenue": "169441.92"
+  }
+},
+{
+  "model": "network.outlet",
+  "pk": 11,
+  "fields": {
+    "outlet_type": "DEALER",
+    "name": "НексусСтор",
+    "country": "Россия",
+    "city": "Ростов-на-Дону",
+    "street": "пр. Буденновский",
+    "house_number": "67",
+    "daily_revenue": "3295.19"
+  }
+}
+]

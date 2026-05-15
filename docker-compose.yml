@@ -5,6 +5,10 @@ networks:
 services:
   web:
     build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py load_fixtures &&
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:

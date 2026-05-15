@@ -1,0 +1,387 @@
+[
+{
+  "model": "network.employee",
+  "pk": 1,
+  "fields": {
+    "outlet": 1,
+    "full_name": "Директоров Виктор Павлович",
+    "phone": "+77880663052",
+    "email": "director@electronics.local",
+    "user": 1
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 2,
+  "fields": {
+    "outlet": 2,
+    "full_name": "Иванов Михаил Александрович",
+    "phone": "+73975425955",
+    "email": "emp1_0@техномир.local",
+    "user": 2
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 3,
+  "fields": {
+    "outlet": 2,
+    "full_name": "Иванова Екатерина Дмитриевна",
+    "phone": "+78125585798",
+    "email": "emp1_1@техномир.local",
+    "user": 3
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 4,
+  "fields": {
+    "outlet": 2,
+    "full_name": "Иванова Анна Александровна",
+    "phone": "+77540523334",
+    "email": "emp1_2@техномир.local",
+    "user": 4
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 5,
+  "fields": {
+    "outlet": 3,
+    "full_name": "Попов Дмитрий Иванович",
+    "phone": "+78838044633",
+    "email": "emp2_0@электросфера.local",
+    "user": 5
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 6,
+  "fields": {
+    "outlet": 3,
+    "full_name": "Волков Иван Александрович",
+    "phone": "+73028429843",
+    "email": "emp2_1@электросфера.local",
+    "user": 6
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 7,
+  "fields": {
+    "outlet": 3,
+    "full_name": "Новикова Ольга Дмитриевна",
+    "phone": "+73011887239",
+    "email": "emp2_2@электросфера.local",
+    "user": 7
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 8,
+  "fields": {
+    "outlet": 4,
+    "full_name": "Новиков Дмитрий Андреевич",
+    "phone": "+70668638020",
+    "email": "emp3_0@дигиталплаза.local",
+    "user": 8
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 9,
+  "fields": {
+    "outlet": 4,
+    "full_name": "Новиков Сергей Николаевич",
+    "phone": "+77672573744",
+    "email": "emp3_1@дигиталплаза.local",
+    "user": 9
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 10,
+  "fields": {
+    "outlet": 4,
+    "full_name": "Морозова Анна Алексеевна",
+    "phone": "+77890712541",
+    "email": "emp3_2@дигиталплаза.local",
+    "user": 10
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 11,
+  "fields": {
+    "outlet": 4,
+    "full_name": "Сидорова Ольга Алексеевна",
+    "phone": "+77831274332",
+    "email": "emp3_3@дигиталплаза.local",
+    "user": 11
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 12,
+  "fields": {
+    "outlet": 5,
+    "full_name": "Лебедев Дмитрий Андреевич",
+    "phone": "+79085274646",
+    "email": "emp4_0@мегатех.local",
+    "user": 12
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 13,
+  "fields": {
+    "outlet": 5,
+    "full_name": "Козлов Мария Александрович",
+    "phone": "+76913340635",
+    "email": "emp4_1@мегатех.local",
+    "user": 13
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 14,
+  "fields": {
+    "outlet": 5,
+    "full_name": "Лебедев Михаил Иванович",
+    "phone": "+72677663226",
+    "email": "emp4_2@мегатех.local",
+    "user": 14
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 15,
+  "fields": {
+    "outlet": 5,
+    "full_name": "Петров Сергей Павлович",
+    "phone": "+72476136732",
+    "email": "emp4_3@мегатех.local",
+    "user": 15
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 16,
+  "fields": {
+    "outlet": 6,
+    "full_name": "Сидоров Дмитрий Андреевич",
+    "phone": "+74560068151",
+    "email": "emp5_0@смартстор.local",
+    "user": 16
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 17,
+  "fields": {
+    "outlet": 6,
+    "full_name": "Иванова Мария Сергеевна",
+    "phone": "+77660826448",
+    "email": "emp5_1@смартстор.local",
+    "user": 17
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 18,
+  "fields": {
+    "outlet": 6,
+    "full_name": "Соколова Ольга Алексеевна",
+    "phone": "+73091998430",
+    "email": "emp5_2@смартстор.local",
+    "user": 18
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 19,
+  "fields": {
+    "outlet": 6,
+    "full_name": "Лебедев Михаил Михайлович",
+    "phone": "+78498616031",
+    "email": "emp5_3@смартстор.local",
+    "user": 19
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 20,
+  "fields": {
+    "outlet": 7,
+    "full_name": "Иванова Наталья Михайловна",
+    "phone": "+78373689533",
+    "email": "emp6_0@гаджетхаус.local",
+    "user": 20
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 21,
+  "fields": {
+    "outlet": 7,
+    "full_name": "Лебедева Екатерина Дмитриевна",
+    "phone": "+78454076293",
+    "email": "emp6_1@гаджетхаус.local",
+    "user": 21
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 22,
+  "fields": {
+    "outlet": 8,
+    "full_name": "Иванова Александра Николаевна",
+    "phone": "+73857539206",
+    "email": "emp7_0@технолайн.local",
+    "user": 22
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 23,
+  "fields": {
+    "outlet": 8,
+    "full_name": "Козлов Сергей Владимирович",
+    "phone": "+77380856552",
+    "email": "emp7_1@технолайн.local",
+    "user": 23
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 24,
+  "fields": {
+    "outlet": 8,
+    "full_name": "Волков Александр Алексеевич",
+    "phone": "+73453751848",
+    "email": "emp7_2@технолайн.local",
+    "user": 24
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 25,
+  "fields": {
+    "outlet": 8,
+    "full_name": "Новикова Ольга Михайловна",
+    "phone": "+76216182316",
+    "email": "emp7_3@технолайн.local",
+    "user": 25
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 26,
+  "fields": {
+    "outlet": 9,
+    "full_name": "Козлова Ольга Дмитриевна",
+    "phone": "+74763903468",
+    "email": "emp8_0@джетэлектроникс.local",
+    "user": 26
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 27,
+  "fields": {
+    "outlet": 9,
+    "full_name": "Иванов Иван Павлович",
+    "phone": "+70788411251",
+    "email": "emp8_1@джетэлектроникс.local",
+    "user": 27
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 28,
+  "fields": {
+    "outlet": 9,
+    "full_name": "Соколова Екатерина Дмитриевна",
+    "phone": "+76610129677",
+    "email": "emp8_2@джетэлектроникс.local",
+    "user": 28
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 29,
+  "fields": {
+    "outlet": 9,
+    "full_name": "Петров Михаил Иванович",
+    "phone": "+74448804452",
+    "email": "emp8_3@джетэлектроникс.local",
+    "user": 29
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 30,
+  "fields": {
+    "outlet": 10,
+    "full_name": "Соколов Иван Владимирович",
+    "phone": "+71218114885",
+    "email": "emp9_0@инноватех.local",
+    "user": 30
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 31,
+  "fields": {
+    "outlet": 10,
+    "full_name": "Иванова Екатерина Алексеевна",
+    "phone": "+74004620587",
+    "email": "emp9_1@инноватех.local",
+    "user": 31
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 32,
+  "fields": {
+    "outlet": 11,
+    "full_name": "Иванов Сергей Сергеевич",
+    "phone": "+77745430514",
+    "email": "emp10_0@нексусстор.local",
+    "user": 32
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 33,
+  "fields": {
+    "outlet": 11,
+    "full_name": "Иванова Наталья Александровна",
+    "phone": "+78679841888",
+    "email": "emp10_1@нексусстор.local",
+    "user": 33
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 34,
+  "fields": {
+    "outlet": 11,
+    "full_name": "Сидорова Ольга Ивановна",
+    "phone": "+71102904408",
+    "email": "emp10_2@нексусстор.local",
+    "user": 34
+  }
+},
+{
+  "model": "network.employee",
+  "pk": 35,
+  "fields": {
+    "outlet": 11,
+    "full_name": "Волкова Ольга Алексеевна",
+    "phone": "+75363323871",
+    "email": "emp10_3@нексусстор.local",
+    "user": 35
+  }
+}
+]
