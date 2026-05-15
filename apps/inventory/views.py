@@ -6,6 +6,7 @@ from rest_framework.exceptions import ValidationError
 
 from apps.network.models import Outlet
 from apps.network.serializers import OutletSerializer
+
 from .filters import OutletFilter
 from .parameters import PRODUCT_ID_PARAM
 
@@ -29,6 +30,8 @@ class OutletsByProductView(generics.ListAPIView):
         filtered_qs = self.filter_queryset(qs)
         logger.debug(
             "by-product query: product_id=%s found %d outlets with stock, user='%s'",
-            product_id, filtered_qs.count(), self.request.user,
+            product_id,
+            filtered_qs.count(),
+            self.request.user,
         )
         return filtered_qs

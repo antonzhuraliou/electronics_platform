@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apps.network.models import Outlet, Employee
+
+from apps.network.models import Employee, Outlet
 
 
 class EmployeeSerializer(serializers.ModelSerializer):

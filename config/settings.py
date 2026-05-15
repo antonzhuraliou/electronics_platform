@@ -249,22 +249,16 @@ REST_FRAMEWORK = {
         "apps.network.permissions.IsActiveEmployee",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "DEFAULT_FILTER_BACKENDS": [
-        "django_filters.rest_framework.DjangoFilterBackend"
-    ]
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 SPECTACULAR_SETTINGS = {
-    'APPEND_COMPONENTS': {
+    "APPEND_COMPONENTS": {
         "securitySchemes": {
-            "OutletAPIKeyAuth": {
-                "type": "apiKey",
-                "in": "header",
-                "name": "X-API-Key"
-            }
+            "OutletAPIKeyAuth": {"type": "apiKey", "in": "header", "name": "X-API-Key"}
         }
     },
-    'SECURITY': [
-        {'OutletAPIKeyAuth': []},
+    "SECURITY": [
+        {"OutletAPIKeyAuth": []},
     ],
 }
 

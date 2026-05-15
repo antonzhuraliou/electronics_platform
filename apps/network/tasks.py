@@ -4,6 +4,7 @@ from celery import shared_task
 
 logger = logging.getLogger(__name__)
 
+
 @shared_task
 def clear_daily_revenue_async(outlet_ids: list[int]):
     from apps.network.models import Outlet

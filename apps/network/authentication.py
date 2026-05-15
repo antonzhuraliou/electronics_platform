@@ -1,9 +1,9 @@
 import logging
 
+from django.contrib.auth.models import User
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.request import Request
-from django.contrib.auth.models import User
 
 from apps.network.models import OutletAPIKey
 
@@ -24,7 +24,9 @@ class OutletAPIKeyAuthentication(BaseAuthentication):
             return None
 
         try:
-            outlet_api_key = OutletAPIKey.objects.select_related('user', 'outlet').get(key=api_key)
+            outlet_api_key = OutletAPIKey.objects.select_related("user", "outlet").get(
+                key=api_key
+            )
         except OutletAPIKey.DoesNotExist:
             logger.warning(
                 "API key authentication failed: unknown key (prefix='%s...') from %s",

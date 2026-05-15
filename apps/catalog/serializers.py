@@ -1,6 +1,8 @@
 from datetime import date
+
 from django.utils import timezone
 from rest_framework import serializers
+
 from apps.catalog.models import Product
 
 
@@ -25,7 +27,5 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def validate_release_date(self, value: date) -> date:
         if value > timezone.now().date():
-            raise serializers.ValidationError(
-                "Release date cannot be in the future."
-            )
+            raise serializers.ValidationError("Release date cannot be in the future.")
         return value

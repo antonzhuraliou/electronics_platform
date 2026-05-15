@@ -1,7 +1,7 @@
 import uuid
 
-from django.db import models
 from django.core.exceptions import ValidationError
+from django.db import models
 
 from config import settings
 
@@ -40,7 +40,7 @@ class Outlet(models.Model):
             models.UniqueConstraint(
                 fields=["outlet_type"],
                 condition=models.Q(outlet_type="HEAD"),
-                name="unique_head_office"
+                name="unique_head_office",
             )
         ]
 
@@ -66,11 +66,22 @@ class Outlet(models.Model):
 class OutletAPIKey(models.Model):
     """Represents an API key used to authenticate requests for a specific outlet."""
 
-    key = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, verbose_name="API-key")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User", related_name="api_keys")
-    outlet = models.ForeignKey('Outlet', on_delete=models.CASCADE, verbose_name="Outlet", related_name="api_keys")
+    key = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, verbose_name="API-key"
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="User",
+        related_name="api_keys",
+    )
+    outlet = models.ForeignKey(
+        "Outlet",
+        on_delete=models.CASCADE,
+        verbose_name="Outlet",
+        related_name="api_keys",
+    )
     is_admin = models.BooleanField(default=False, verbose_name="Admin access")
-
 
     class Meta:
         verbose_name = "Outlet API Key"
@@ -99,7 +110,7 @@ class Employee(models.Model):
         on_delete=models.CASCADE,
         related_name="employee",
         verbose_name="User",
-        null=True
+        null=True,
     )
 
     class Meta:

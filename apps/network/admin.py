@@ -1,10 +1,10 @@
 import logging
 
 from django.contrib import admin, messages
-from django.http import HttpRequest
 from django.db.models import QuerySet
+from django.http import HttpRequest
 
-from apps.network.models import Outlet, Employee
+from apps.network.models import Employee, Outlet
 from apps.network.tasks import clear_daily_revenue_async
 
 logger = logging.getLogger(__name__)
@@ -37,7 +37,9 @@ class OutletAdmin(admin.ModelAdmin):
             clear_daily_revenue_async.delay(ids)
             logger.info(
                 "Admin '%s' triggered async clear_daily_revenue for %d outlets: %s",
-                request.user, len(ids), ids,
+                request.user,
+                len(ids),
+                ids,
             )
             self.message_user(
                 request,
@@ -48,14 +50,15 @@ class OutletAdmin(admin.ModelAdmin):
             queryset.update(daily_revenue=0)
             logger.info(
                 "Admin '%s' cleared daily_revenue for %d outlets: %s",
-                request.user, len(ids), ids,
+                request.user,
+                len(ids),
+                ids,
             )
             self.message_user(
                 request,
                 f"Daily revenue cleared for {len(ids)} outlets.",
                 messages.SUCCESS,
             )
-
 
 
 @admin.register(Employee)

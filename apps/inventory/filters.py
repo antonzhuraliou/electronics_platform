@@ -1,6 +1,5 @@
 import django_filters
 from django.db.models import QuerySet
-from drf_spectacular.utils import extend_schema_field
 
 from apps.network.models import Outlet
 
@@ -14,12 +13,13 @@ class OutletFilter(django_filters.FilterSet):
         model = Outlet
         fields = ["product_id"]
 
-    def filter_by_product(self, queryset: QuerySet[Outlet], name: str, value: int) -> QuerySet[Outlet]:
+    def filter_by_product(
+        self, queryset: QuerySet[Outlet], name: str, value: int
+    ) -> QuerySet[Outlet]:
         """Filter outlets that have stock for the given product_id."""
         from .models import StockItem
 
-        outlet_ids = (
-            StockItem.objects.filter(product_id=value, quantity__gt=0)
-            .values_list("outlet_id", flat=True)
-        )
+        outlet_ids = StockItem.objects.filter(
+            product_id=value, quantity__gt=0
+        ).values_list("outlet_id", flat=True)
         return queryset.filter(id__in=outlet_ids)

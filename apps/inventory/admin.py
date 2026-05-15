@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from django.http import HttpRequest
-from django.utils.html import format_html
-from django.urls import reverse
 from django.db.models import QuerySet
+from django.http import HttpRequest
+from django.urls import reverse
+from django.utils.html import format_html
+
 from apps.inventory.models import StockItem
 
 
@@ -11,7 +12,9 @@ class InStockFilter(admin.SimpleListFilter):
     title = "Availability"
     parameter_name = "in_stock"
 
-    def lookups(self, request: HttpRequest, model_admin: ModelAdmin) -> list[tuple[str, str]]:
+    def lookups(
+        self, request: HttpRequest, model_admin: ModelAdmin
+    ) -> list[tuple[str, str]]:
         return [
             ("yes", "In stock"),
             ("no", "Out of stock"),
