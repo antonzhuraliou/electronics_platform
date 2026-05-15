@@ -69,6 +69,8 @@ class OutletAPIKey(models.Model):
     key = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, verbose_name="API-key")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User", related_name="api_keys")
     outlet = models.ForeignKey('Outlet', on_delete=models.CASCADE, verbose_name="Outlet", related_name="api_keys")
+    is_admin = models.BooleanField(default=False, verbose_name="Admin access")
+
 
     class Meta:
         verbose_name = "Outlet API Key"

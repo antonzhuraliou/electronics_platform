@@ -36,6 +36,7 @@ class OutletAPIKeyAuthentication(BaseAuthentication):
         user = outlet_api_key.user
         outlet = outlet_api_key.outlet
         user._outlet_api_key_outlet = outlet
+        user._outlet_api_key_is_admin = outlet_api_key.is_admin
 
         logger.debug(
             "API key authentication succeeded: outlet='%s' user='%s' from %s",

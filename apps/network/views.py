@@ -29,6 +29,10 @@ class OutletViewSet(
 
         user = self.request.user
         outlet_key_outlet = getattr(user, "_outlet_api_key_outlet", None)
+        is_api_key_admin = getattr(user, "_outlet_api_key_is_admin", False)
+
+        if is_api_key_admin:
+            return qs
 
         if outlet_key_outlet is not None:
             return qs.filter(pk=outlet_key_outlet.pk)
