@@ -1,3 +1,6 @@
+from django.urls import path
+from .views import OutletsByProductView
+
 urlpatterns = [
-    # TODO: add inventory endpoints
+    path("inventory/by-product/", OutletsByProductView.as_view(), name="outlets-by-product"),
 ]
